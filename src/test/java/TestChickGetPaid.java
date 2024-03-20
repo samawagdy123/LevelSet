@@ -2,34 +2,35 @@ import POM.Document;
 import POM.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TestChickGetPaid {
-    WebDriver driver;
-    HomePage homePage;
-    Document doc;
+    private WebDriver driver;
+    private HomePage homePage;
+    private Document doc;
 
     @BeforeClass
     public void setUp(){
-        driver= new EdgeDriver();
-        homePage=new HomePage(driver);
-        doc=new Document(driver);
+        driver = new EdgeDriver();
+        homePage = new HomePage(driver);
+        doc = new Document(driver);
     }
 
     @Test
     public void checkDocPrice(){
-
-        homePage.navigateToHome();
+        homePage.navigateToHomePage();
         homePage.getPaidClick();
-        doc.docPageLoaded();
+        doc.checkDocPageLoaded();
 
-        /*Assert.assertEquals(doc.getDocName(),"File a Lien","Not the same DOC name");
-        Assert.assertEquals(doc.getDocPrice(),"$449","Not the same DOC Price");*/
+        Assert.assertEquals(doc.getDocName(), "File a Lien", "Document name does not match");
+        Assert.assertEquals(doc.getDocPrice(), "$449", "Document price does not match");
     }
 
-  /* @AfterClass
-    public void shutDown(){
+   @AfterClass
+    public void tearDown(){
         driver.quit();
-    }*/
+    }
 }
