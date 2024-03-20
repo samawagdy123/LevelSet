@@ -19,14 +19,14 @@ public class HomePage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
-    public void navigateToHome(){
+    public void navigateToHomePage(){
         driver.get(homeUrl);
         wait.until(ExpectedConditions.elementToBeClickable(getPaidElement));
     }
     public void getPaidClick(){
         driver.findElement(getPaidElement).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(docElement));
-        driver.findElement(docElement).click();
+        driver.findElement(getPaidElement).click();
     }
 
 }
