@@ -19,13 +19,11 @@ public class Document {
     }
 
     public String getDocName(){
-        WebElement docName=driver.findElement(docNameExampleElement);
-        return docName.getText();
+        return driver.findElement(docNameExampleElement).getText();
     }
 
     public String getDocPrice(){
-        WebElement docPrice=driver.findElement(docPriceExampleElement);
-        return docPrice.getText();
+        return driver.findElement(docPriceExampleElement).getText();
     }
 
     public void navigateToDocPage(){
